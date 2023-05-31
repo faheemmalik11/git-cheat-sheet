@@ -24,6 +24,8 @@
 
 * [I want to copy the last commit from another branch into my branch.](#i-want-to-copy-the-last-commit-from-another-branch-into-my-branch)
 
+* [I want to copy an earlier commit from the current branch to the `head`.](#i-want-to-copy-an-earlier-commit-from-the-current-branch-to-the-head)
+
 
 ### status
 
@@ -230,4 +232,19 @@ git checkout master
 # Copy the `head` commit-changes of the `my-feature` branch onto the `master`
 # branch. This will create a new `head` commit on `master`.
 git cherry-pick my-feature
+```
+
+
+### I want to copy an earlier commit from the current branch to the `head`.
+​
+Sometimes, after you understand why reverted code was breaking, you want to bring the reverted code back into play and then fix it. You _could_ use the `revert` command in order to "revert the revert"; but, such terminology is unattractive. As such, you can `cherry-pick` the reverted commit to bring it back into the `head` where you can then fix it and commit it:
+​
+```sh
+git checkout master
+​
+# Assuming that `head~~~` and `19e771` are the same commit, the following are
+# equivalent and will copy the changes in `19e771` to the `head` of the 
+# current branch (as a new commit).
+git cherry-pick head~~~
+git cherry-pick 19e771
 ```
