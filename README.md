@@ -36,6 +36,9 @@
 
 * [I want to extract changes that I accidentally made to `master`.](#i-want-to-extract-changes-that-i-accidentally-made-to-master)
 
+* [I want to undo the changes that I've made to my branch.](#i-want-to-undo-the-changes-that-ive-made-to-my-branch)
+
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -365,3 +368,20 @@ git checkout -b my-feature
 git checkout master
 git reset --hard origin/master
 ```
+
+### I want to undo the changes that I've made to my branch.
+
+If you've edited some files and then change your mind about keeping those edits, you can reset the branch using the `--hard` modifier. This will update the working tree - your file structure - to match the structure of the last commit on the branch (`head`).
+
+**Caution**: You will lose data when using the `--hard` option.
+
+```sh
+git checkout my-feature
+# ... changes to the working tree (your file system).
+git add .
+
+# Remove the file from staging AND remove the changes from the file system.
+git reset --hard
+```
+
+If you call `git reset` without the `--hard` option, it will reset the staging to match the `head` of the branch, but it will leave your file system in place. As such, you will be left with "unstaged changes" that can be modified and re-committed.
