@@ -40,6 +40,9 @@
 
 * [I want to remove unpublished changes from my branch.](#i-want-to-remove-unpublished-changes-from-my-branch)
 
+* [I want to see which branches have already been merged into `master`.](#i-want-to-see-which-branches-have-already-been-merged-into-master)
+
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -403,4 +406,16 @@ git fetch origin my-feature
 # will update your index and your local file system to match the published
 # version of `my-feature`.
 git reset --hard origin/my-feature
+```
+
+### I want to see which branches have already been merged into `master`.
+
+From any branch, you can locate the merged-in branches (that can be safely deleted) by using the `--merged` modifier:
+
+```sh
+git checkout master
+
+# List all of the local branches that have been merged into `master`. This
+# command will be relative to the branch that you have checked-out.
+git branch --merged
 ```
