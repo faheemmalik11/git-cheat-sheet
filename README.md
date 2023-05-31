@@ -6,6 +6,8 @@
 
 * [I want to checkout the previous branch that I was on.](#i-want-to-checkout-the-previous-branch-that-i-was-on)
 
+* [I want to list the files that have been modified in the current working tree.](#i-want-to-list-the-files-that-have-been-modified-in-the-current-working-tree)
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -67,5 +69,13 @@ git checkout master
 ​
 # At this point, the `-` refers to the `my-feature` branch.
 git cherry-pick -
+```
+
+### I want to list the files that have been modified in the current working tree.
+​
+By default, when you call `git diff`, you see all of the content that has been modified in the current working tree (and not yet staged). However, you can use the `--stat` modifier to simply list the files that have been modified:
+​
+```sh
+git diff --stat
 ```
 ​
