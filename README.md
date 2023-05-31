@@ -26,6 +26,7 @@
 
 * [I want to copy an earlier commit from the current branch to the `head`.](#i-want-to-copy-an-earlier-commit-from-the-current-branch-to-the-head)
 
+* [I want to update the files in the current commit.](#i-want-to-update-the-files-in-the-current-commit)
 
 ### status
 
@@ -247,4 +248,20 @@ git checkout master
 # current branch (as a new commit).
 git cherry-pick head~~~
 git cherry-pick 19e771
+```
+
+### I want to update the files in the current commit.
+
+If you want to make changes to a commit after you've already committed the changes in your current working tree, you can use the `--amend` modifier. This will add any staged changes to the existing commit.
+
+```sh
+git commit -m "Woot, finally finished!"
+
+# Oops, you forgot a change. Edit the file and stage it.
+# ... changes to the working tree (your file system).
+git add oops.txt
+
+# Adds the currently-staged changes (oops.txt) to the current commit, giving
+# you a chance to update the commit message.
+git commit --amend
 ```
