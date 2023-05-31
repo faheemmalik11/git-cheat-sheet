@@ -22,6 +22,9 @@
 
 * [I want to copy a file from a given commit into my current working tree.](#i-want-to-copy-a-file-from-a-given-commit-into-my-current-working-tree)
 
+* [I want to copy the last commit from another branch into my branch.](#i-want-to-copy-the-last-commit-from-another-branch-into-my-branch)
+
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -217,3 +220,14 @@ git checkout my-feature
 git checkout master -- README.md
 ```
 ​
+### I want to copy the last commit from another branch into my branch.
+​
+When you don't want to merge a branch into your current working tree, you can use the `cherry-pick` command to copy specific commit-changes into your working tree. Doing so creates a new commit on top of the current branch:
+​
+```sh
+git checkout master
+​
+# Copy the `head` commit-changes of the `my-feature` branch onto the `master`
+# branch. This will create a new `head` commit on `master`.
+git cherry-pick my-feature
+```
