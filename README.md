@@ -10,6 +10,9 @@
 
 * [I want to view the changes that were made in a given commit.](#i-want-to-view-the-changes-that-were-made-in-a-given-commit)
 
+* [I want to list the files that were changed in a given commit.](#i-want-to-list-the-files-that-were-changed-in-a-given-commit)
+
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -112,5 +115,14 @@ git show head~~~ # Show changes in first parent's first parent's first parent.
 git show my-feature~
 git show my-feature~~
 git show my-feature~~~
+```
+
+### I want to list the files that were changed in a given commit.
+​
+Just as with `git diff`, you can limit the output of the `git show` command using the `--stat` modifier. This will list the files that were changed in the given commit:
+​
+```sh
+# Outputs the list of files changed in the commit with the given hash.
+git show 19e771 --stat
 ```
 ​
