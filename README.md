@@ -12,6 +12,8 @@
 
 * [I want to list the files that were changed in a given commit.](#i-want-to-list-the-files-that-were-changed-in-a-given-commit)
 
+* [I want to view the changes that were made across multiple commits.](#i-want-to-view-the-changes-that-were-made-across-multiple-commits)
+
 
 ### status
 
@@ -124,5 +126,33 @@ Just as with `git diff`, you can limit the output of the `git show` command usin
 ```sh
 # Outputs the list of files changed in the commit with the given hash.
 git show 19e771 --stat
+```
+
+### I want to view the changes that were made across multiple commits.
+​
+While the `show` command can show you changes in a given commit, you can use the `diff` command to show changes across multiple commits:
+​
+```sh
+git checkout master
+​
+# Outputs the changes between `head~` and `head` of the current branch. If
+# only one commit is provided, other commit is assumed to be `head`.
+git diff head~
+​
+# Outputs the changes between the first commit and the second commit.
+git diff head~~~..head~~
+```
+​
+And, since branch names are really just aliases for commits, you can use a branch name in order to show the changes between one branch and your branch:
+​
+```sh
+git checkout my-feature
+​
+# At this point, the following are equivalent and output the changes between
+# the `head` commit of the `master` branch and the `head` commit of the
+# `my-feature` branch.
+git diff master
+git diff master..head
+git diff master..my-feature
 ```
 ​
