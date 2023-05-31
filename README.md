@@ -30,6 +30,7 @@
 
 * [I want to edit the current commit message.](#i-want-to-edit-the-current-commit-message)
 
+* [I want to copy `master` into my feature branch.](#i-want-to-copy-master-into-my-feature-branch)
 
 ### status
 
@@ -282,3 +283,42 @@ git commit --amend -m "This is great."
 ```
 
 Note that if you omit the `-m message` portion of this command, you will be able to edit the commit message in your configured editor.
+
+### I want to copy `master` into my feature branch.
+
+At first, you may be tempted to simply `merge` your `master` branch into your feature branch, but doing so will create an unattactive, non-intuitive, Frankensteinian commit tree. Instead, you should `rebase` your feature branch on `master`. This will ensure that your feature commits are cleanly colocated in the commit tree and align more closely with a human mental model:
+
+```sh
+git checkout my-feature
+
+# This will unwind the commits specific to the `my-feature` branch, pull in
+# the missing `master` commits, and then replay your `my-feature` commits.
+git rebase master
+```
+
+Once your `my-feature` branch has been rebased on `master`, you could then, if you wanted to, perform a `--ff-only` merge ("fast forward only") of your feature branch back into `master`:
+
+```sh
+git checkout my-feature
+git rebase master
+
+# Fast-forward merge of `my-feature` changes into `master`, which means there
+# is no creation of a "merge commit" - your `my-features` changes are simply
+# added to the top of `master`.
+git checkout master
+git merge --ff-only my-feature
+```
+
+That said, when you're working on a team where everyone uses a different git workflow, you will definitely _want_ a "merge commit". This way, multi-commit merges can be easily reverted. To force a "merge commit", you can use the `--no-ff` modifier ("no fast forward"):
+
+```sh
+# Get the `my-feature` branch ready for merge.
+git checkout my-feature
+git rebase master
+
+# Merge the `my-feature` branch into `master` creating a merge-commit.
+git checkout master
+git merge --no-ff my-feature
+```
+
+Now, if the merge needs to be reverted, you can simply revert the "merge commit" and all commits associated with the merge will be reverted.
