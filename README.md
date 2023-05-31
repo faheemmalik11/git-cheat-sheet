@@ -20,6 +20,8 @@
 
 * [I want to open the contents of a file in a given commit in my editor.](#i-want-to-open-the-contents-of-a-file-in-a-given-commit-in-my-editor)
 
+* [I want to copy a file from a given commit into my current working tree.](#i-want-to-copy-a-file-from-a-given-commit-into-my-current-working-tree)
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -201,4 +203,17 @@ git show my-feature:README.md | subl
 git show 19e771:README.md | less
 ```
 ​
+​
+### I want to copy a file from a given commit into my current working tree.
+​
+Normally, the `checkout` command will update the entire working tree to point to a given commit. However, you can use the `--` modifier to copy (or checkout) a single file from the given commit into your working tree:
+​
+```sh
+git checkout my-feature
+​
+# While staying on the `my-feature` branch, copy the `README.md` file from
+# the `master` branch into the current working tree. This will overwrite the
+# current version of `README.md` in your working tree.
+git checkout master -- README.md
+```
 ​
