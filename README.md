@@ -16,6 +16,8 @@
 
 * [I want to view the changes that were made in a given file.](#i-want-to-view-the-changes-that-were-made-in-a-given-file)
 
+* [I want to view the contents of a file in a given commit.](#i-want-to-view-the-contents-of-a-file-in-a-given-commit)
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -169,4 +171,19 @@ git show my-feature -- README.md
 # Outputs the changes made to the `README.md` file in the `19e771` commit.
 git show 19e771 -- README.md
 ```
+
+### I want to view the contents of a file in a given commit.
+​
+By default, the `show` command shows you the changes made to a file in a given commit. However, if you want to view the entire contents of a file as defined at that time of a given commit, regardless of the changes made in that particular commit, you can use the `:` modifier to identify a filepath:
+​
+```sh
+# Outputs the contents of the `README.md` file as defined in the `head` commit
+# of the `my-feature` branch.
+git show my-feature:README.md
+​
+# Outputs the contents of the `README.md` file as defined in the `19e771`
+# commit.
+git show 19e771:README.md
+```
+​
 ​
