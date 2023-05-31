@@ -28,6 +28,9 @@
 
 * [I want to update the files in the current commit.](#i-want-to-update-the-files-in-the-current-commit)
 
+* [I want to edit the current commit message.](#i-want-to-edit-the-current-commit-message)
+
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -265,3 +268,17 @@ git add oops.txt
 # you a chance to update the commit message.
 git commit --amend
 ```
+
+### I want to edit the current commit message.
+
+In addition to adding files to the current commit, the `--amend` modifier can also be used to change the current commit message:
+
+```sh
+git add .
+git commit -m "This is greet."
+
+# Oh noes! You misspelled "great". You can edit the current commit message:
+git commit --amend -m "This is great."
+```
+
+Note that if you omit the `-m message` portion of this command, you will be able to edit the commit message in your configured editor.
