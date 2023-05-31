@@ -38,6 +38,7 @@
 
 * [I want to undo the changes that I've made to my branch.](#i-want-to-undo-the-changes-that-ive-made-to-my-branch)
 
+* [I want to remove unpublished changes from my branch.](#i-want-to-remove-unpublished-changes-from-my-branch)
 
 ### status
 
@@ -385,3 +386,21 @@ git reset --hard
 ```
 
 If you call `git reset` without the `--hard` option, it will reset the staging to match the `head` of the branch, but it will leave your file system in place. As such, you will be left with "unstaged changes" that can be modified and re-committed.
+
+
+### I want to remove unpublished changes from my branch.
+
+If you've committed changes to the local copy of a remote (ie, published) branch, but you want to undo those changes, you can `reset` the local branch to match the remote branch:
+
+```sh
+git checkout my-feature
+
+# Update the remote copy of the `my-feature` branch in order to make sure that
+# you are working with the most up-to-date remote content.
+git fetch origin my-feature
+
+# Now, reset the local copy of `my-feature` to match the published copy. This
+# will update your index and your local file system to match the published
+# version of `my-feature`.
+git reset --hard origin/my-feature
+```
