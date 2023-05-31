@@ -14,6 +14,7 @@
 
 * [I want to view the changes that were made across multiple commits.](#i-want-to-view-the-changes-that-were-made-across-multiple-commits)
 
+* [I want to view the changes that were made in a given file.](#i-want-to-view-the-changes-that-were-made-in-a-given-file)
 
 ### status
 
@@ -154,5 +155,18 @@ git checkout my-feature
 git diff master
 git diff master..head
 git diff master..my-feature
+```
+
+### I want to view the changes that were made in a given file.
+​
+By default, the `show` command shows all of the changes in a given commit. You can limit the scope of the output by using the `--` modifier and identifying a filepath:
+​
+```sh
+# Outputs the changes made to the `README.md` file in the `head` commit of the
+# `my-feature` branch.
+git show my-feature -- README.md
+​
+# Outputs the changes made to the `README.md` file in the `19e771` commit.
+git show 19e771 -- README.md
 ```
 ​
