@@ -18,6 +18,8 @@
 
 * [I want to view the contents of a file in a given commit.](#i-want-to-view-the-contents-of-a-file-in-a-given-commit)
 
+* [I want to open the contents of a file in a given commit in my editor.](#i-want-to-open-the-contents-of-a-file-in-a-given-commit-in-my-editor)
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -184,6 +186,19 @@ git show my-feature:README.md
 # Outputs the contents of the `README.md` file as defined in the `19e771`
 # commit.
 git show 19e771:README.md
+```
+
+### I want to open the contents of a file in a given commit in my editor.
+​
+Since you're working on the command-line, the output of any git-command can be piped into another command. As such, you can use the `show` command to open a previous commit's file-content in your editor or viewer of choice:
+​
+```sh
+# Opens the `README.md` file from the `head` commit of the `my-feature` branch
+# in the Sublime Text editor.
+git show my-feature:README.md | subl
+​
+# Opens the `README.md` file from the `19e771` commit in the `less` viewer.
+git show 19e771:README.md | less
 ```
 ​
 ​
