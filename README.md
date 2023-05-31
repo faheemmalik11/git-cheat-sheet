@@ -34,6 +34,8 @@
 
 * [I want to revert the merge of my feature branch into `master`.](#i-want-to-revert-the-merge-of-my-feature-branch-into-master)
 
+* [I want to extract changes that I accidentally made to `master`.](#i-want-to-extract-changes-that-i-accidentally-made-to-master)
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -343,4 +345,23 @@ git merge --no-ff my-feature
 # same commit, the following are equivalent:
 git revert -m 1 head
 git revert -m 1 master
+```
+
+### I want to extract changes that I accidentally made to `master`.
+
+Sometimes, after you've finished working on your feature branch, you execute `git checkout master`, only find that you've been accidentally working on `master` the whole time (error: "Already on 'master'"). To fix this, you can `checkout` a new branch and `reset` your `master` branch:
+
+```sh
+git checkout master
+# > error: Already on 'master'
+
+# While on the `master` branch, create the `my-feature` branch as a copy of
+# the `master` branch. This way, your `my-feature` branch will contain all of # your recent changes.
+git checkout -b my-feature
+
+# Now that your changes are safely isolated, get back into your `master`
+# branch and `reset` it with the `--hard` modifier so that your local index
+# and file system will match the remote copy.
+git checkout master
+git reset --hard origin/master
 ```
