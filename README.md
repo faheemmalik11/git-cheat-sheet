@@ -8,6 +8,8 @@
 
 * [I want to list the files that have been modified in the current working tree.](#i-want-to-list-the-files-that-have-been-modified-in-the-current-working-tree)
 
+* [I want to view the changes that were made in a given commit.](#i-want-to-view-the-changes-that-were-made-in-a-given-commit)
+
 ### status
 
 The `status` command shows differences between the working tree, the index, and `head` commit.
@@ -77,5 +79,38 @@ By default, when you call `git diff`, you see all of the content that has been m
 ​
 ```sh
 git diff --stat
+```
+
+### I want to view the changes that were made in a given commit.
+​
+When `show` is given a branch name, it will default to `head` - the last or most-recent commit on the given branch:
+​
+```sh
+git checkout master
+​
+# Outputs the changes made to the `head` commit of the current (`master`)
+# branch.
+git show
+​
+# Outputs the changes made to the `head` commit of the `my-feature` branch.
+git show my-feature
+```
+​
+You can also use the `show` command to target a specific commit that is not the `head` commit. This can be done with a specific commit hash; or, a relative commit operator like `~`:
+​
+```sh
+# Outputs the changes made in the commit with the given hash.
+git show 19e771
+​
+# Outputs the changes made in in a previous commit of the current (`master`)
+# branch.
+git show head~ # Show changes in first parent.
+git show head~~ # Show changes in first parent's first parent.
+git show head~~~ # Show changes in first parent's first parent's first parent.
+​
+# Outputs the changes made in a previous commit of the `my-feature` branch.
+git show my-feature~
+git show my-feature~~
+git show my-feature~~~
 ```
 ​
