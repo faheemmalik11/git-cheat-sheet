@@ -42,6 +42,8 @@
 
 * [I want to see which branches have already been merged into `master`.](#i-want-to-see-which-branches-have-already-been-merged-into-master)
 
+* [I want to see which branches have not yet been merged into `master`.](#i-want-to-see-which-branches-have-not-yet-been-merged-into-master)
+
 
 ### status
 
@@ -418,4 +420,15 @@ git checkout master
 # List all of the local branches that have been merged into `master`. This
 # command will be relative to the branch that you have checked-out.
 git branch --merged
+```
+### I want to see which branches have not yet been merged into `master`.
+
+From any branch, you can locate the unmerged branches by using the `--no-merged` modifier:
+
+```sh
+git checkout master
+
+# List all of the local branches that have NOT YET been merged into `master`.
+# This command will be relative the branch you have checked-out.
+git branch --no-merged
 ```
