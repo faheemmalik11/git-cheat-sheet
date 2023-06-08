@@ -57,7 +57,7 @@ The `status` command shows differences between the working tree, the index, and 
 ```sh
 git status
 ```
-
+<hr>
 
 
 ## I want to create a new branch that is based on the current branch.
@@ -70,6 +70,7 @@ git checkout master
 # Creates a new branch, `my-feature`, based on `master`.
 git checkout -b my-feature
 ```
+<hr>
 
 ## I want to checkout the previous branch that I was on.
 ​
@@ -112,6 +113,7 @@ git checkout master
 # At this point, the `-` refers to the `my-feature` branch.
 git cherry-pick -
 ```
+<hr>
 
 ## I want to list the files that have been modified in the current working tree.
 ​
@@ -120,6 +122,7 @@ By default, when you call `git diff`, you see all of the content that has been m
 ```sh
 git diff --stat
 ```
+<hr>
 
 ## I want to view the changes that were made in a given commit.
 ​
@@ -153,6 +156,7 @@ git show my-feature~
 git show my-feature~~
 git show my-feature~~~
 ```
+<hr>
 
 ## I want to list the files that were changed in a given commit.
 ​
@@ -162,6 +166,7 @@ Just as with `git diff`, you can limit the output of the `git show` command usin
 # Outputs the list of files changed in the commit with the given hash.
 git show 19e771 --stat
 ```
+<hr>
 
 ## I want to view the changes that were made across multiple commits.
 ​
@@ -190,6 +195,7 @@ git diff master
 git diff master..head
 git diff master..my-feature
 ```
+<hr>
 
 ## I want to view the changes that were made in a given file.
 ​
@@ -203,6 +209,7 @@ git show my-feature -- README.md
 # Outputs the changes made to the `README.md` file in the `19e771` commit.
 git show 19e771 -- README.md
 ```
+<hr>
 
 ## I want to view the contents of a file in a given commit.
 ​
@@ -217,6 +224,7 @@ git show my-feature:README.md
 # commit.
 git show 19e771:README.md
 ```
+<hr>
 
 ## I want to open the contents of a file in a given commit in my editor.
 ​
@@ -230,7 +238,7 @@ git show my-feature:README.md | subl
 # Opens the `README.md` file from the `19e771` commit in the `less` viewer.
 git show 19e771:README.md | less
 ```
-​
+​<hr>
 ​
 ## I want to copy a file from a given commit into my current working tree.
 ​
@@ -244,7 +252,8 @@ git checkout my-feature
 # current version of `README.md` in your working tree.
 git checkout master -- README.md
 ```
-​
+​<hr>
+
 ## I want to copy the last commit from another branch into my branch.
 ​
 When you don't want to merge a branch into your current working tree, you can use the `cherry-pick` command to copy specific commit-changes into your working tree. Doing so creates a new commit on top of the current branch:
@@ -256,7 +265,7 @@ git checkout master
 # branch. This will create a new `head` commit on `master`.
 git cherry-pick my-feature
 ```
-
+<hr>
 
 ## I want to copy an earlier commit from the current branch to the `head`.
 ​
@@ -271,6 +280,7 @@ git checkout master
 git cherry-pick head~~~
 git cherry-pick 19e771
 ```
+<hr>
 
 ## I want to update the files in the current commit.
 
@@ -287,6 +297,7 @@ git add oops.txt
 # you a chance to update the commit message.
 git commit --amend
 ```
+<hr>
 
 ## I want to edit the current commit message.
 
@@ -301,6 +312,8 @@ git commit --amend -m "This is great."
 ```
 
 Note that if you omit the `-m message` portion of this command, you will be able to edit the commit message in your configured editor.
+
+<hr>
 
 ## I want to copy `master` into my feature branch.
 
@@ -341,6 +354,8 @@ git merge --no-ff my-feature
 
 Now, if the merge needs to be reverted, you can simply revert the "merge commit" and all commits associated with the merge will be reverted.
 
+<hr>
+
 ## I want to revert the merge of my feature branch into `master`.
 
 If you performed a `--ff-only` merge of your feature branch into `master`, there's no "easy" solution. You either have to reset the branch to an earlier commit (rewriting history); or, you have to revert the individual commits in the merge.
@@ -360,6 +375,7 @@ git merge --no-ff my-feature
 git revert -m 1 head
 git revert -m 1 master
 ```
+<hr>
 
 ## I want to extract changes that I accidentally made to `master`.
 
@@ -379,6 +395,7 @@ git checkout -b my-feature
 git checkout master
 git reset --hard origin/master
 ```
+<hr>
 
 ## I want to undo the changes that I've made to my branch.
 
@@ -397,6 +414,7 @@ git reset --hard
 
 If you call `git reset` without the `--hard` option, it will reset the staging to match the `head` of the branch, but it will leave your file system in place. As such, you will be left with "unstaged changes" that can be modified and re-committed.
 
+<hr>
 
 ## I want to configure my username and email.
 
@@ -406,7 +424,7 @@ If you want to configure the username and email of you git. Then simply do:
 git config --global user.name "FIRST_NAME LAST_NAME"
 git config --global user.email "MY_NAME@example.com"
 ```
-
+<hr>
 
 ## I want to create new git branch.
 
@@ -420,7 +438,7 @@ But if you want to create a new branch and switch to the created branch. You can
 ```sh
 git checkout -b <branch_name>
 ```
-
+<hr>
 
 ## I want to clone an existing repository.
 
@@ -429,6 +447,7 @@ git checkout -b <branch_name>
 ```sh
 git clone ssh://john@example.com/path/to/my-project.git 
 ```
+<hr>
 
 ## I want to link an existing local repository to a remote repository.
 
@@ -438,6 +457,7 @@ When you clone a repository, Git automatically sets up a remote named "origin" t
 git remote add origin https://github.com/username/repository.git
 ```
 
+<hr>
 
 ## I want to add local project on github repository.
 
@@ -483,3 +503,5 @@ Use the following command to push your local commits to the remote repository on
 ```sh
 git push origin <branch_name>'i.e main'
 ```
+
+<hr>
