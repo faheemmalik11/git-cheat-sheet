@@ -38,6 +38,17 @@
 
 * [I want to undo the changes that I've made to my branch.](#i-want-to-undo-the-changes-that-ive-made-to-my-branch)
 
+* [I want to configure my username and email.](#i-want-to-configure-my-username-and-email)
+
+* [I want to create new git branch.](#i-want-to-create-new-git-branch)
+
+* [I want to clone an existing repository.](#i-want-to-clone-an-existing-repository)
+
+* [I want to link an existing local repository to a remote repository.](#i-want-to-link-an-existing-local-repository-to-a-remote-repository)
+
+
+* [I want to add local project on github repository.](#i-want-to-add-local-project-on-github-repository)
+
 
 ### status
 
@@ -385,3 +396,90 @@ git reset --hard
 ```
 
 If you call `git reset` without the `--hard` option, it will reset the staging to match the `head` of the branch, but it will leave your file system in place. As such, you will be left with "unstaged changes" that can be modified and re-committed.
+
+
+### I want to configure my username and email.
+
+If you want to configure the username and email of you git. Then simply do:
+
+```sh
+git config --global user.name "FIRST_NAME LAST_NAME"
+git config --global user.email "MY_NAME@example.com"
+```
+
+
+### I want to create new git branch.
+
+If you want to create a new git branch without switching. You can use :
+
+```sh
+git branch <branch_name>
+```
+
+But if you want to create a new branch and switch to the created branch. You can use:
+```sh
+git checkout -b <branch_name>
+```
+
+
+### I want to clone an existing repository.
+
+`git clone` is primarily used to point to an existing repo and make a clone or copy of that repo at in a new directory, at another location.
+
+```sh
+git clone ssh://john@example.com/path/to/my-project.git 
+```
+
+### I want to link an existing local repository to a remote repository.
+
+When you clone a repository, Git automatically sets up a remote named "origin" that points to the repository you cloned from. However, if you create a new local repository or want to link an existing local repository to a remote repository, you need to use the `git remote add origin command`.
+
+```sh
+git remote add origin https://github.com/username/repository.git
+```
+
+
+### I want to add local project on github repository.
+
+
+To add your local project to a GitHub repository, you can follow these general steps:
+
+1- Initialize Git in your local project:
+
+Open a terminal or command prompt.
+Navigate to the root directory of your local project.
+Run the following command to initialize a Git repository:
+
+```sh
+git init
+```
+
+2- Add your project files to the Git repository:
+
+Use the following command to add all files in the current directory and its subdirectories to the repository:
+```sh
+git add .
+```
+
+3- Commit your changes:
+
+After adding the files, create a commit to save the current state of your project using the following command:
+```sh
+git commit -m "initial commit"
+```
+
+4- Link your local repository to the GitHub repository:
+
+On the GitHub repository page, copy the remote repository URL. You can find it by clicking on the "Code" button and selecting the appropriate URL (HTTPS or SSH).
+In your terminal or command prompt, run the following command to add the remote repository:
+
+```sh
+git remote add origin <remote_repository_URL>
+```
+
+5- Push your local repository to GitHub:
+
+Use the following command to push your local commits to the remote repository on GitHub:
+```sh
+git push origin <branch_name>'i.e main'
+```
