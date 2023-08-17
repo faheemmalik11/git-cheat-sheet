@@ -49,6 +49,11 @@
 
 * [I want to add local project on github repository.](#i-want-to-add-local-project-on-github-repository)
 
+* [Permission Denied Error Gitlab](#permission-denied-error-gitlab)
+
+* [HTTP Basic Access denied Gitlab Error](#http-basic-access-denied-gitlab-error)
+
+
 
 ## status
 
@@ -505,3 +510,42 @@ git push origin <branch_name>'i.e main'
 ```
 
 <hr>
+
+
+## Permission Denied Error Gitlab
+
+### Error:
+git@gitlab.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+Please make sure you have the correct access rights
+and the repository exists.
+
+### Solution
+1. Open the terminal
+2. Type ssh-keygen
+3. Press enter.
+4. It will ask you to save the key to the specific directory.
+5. Press enter. It will prompt you to type password or enter without password.
+6. The public key will be created to the specific directory.
+7. Now go to the directory and open .ssh folder.
+8. You'll see a file id_rsa.pub. Open it on notepad. Copy all text from it.
+9. Go to https://gitlab.com/-/profile/keys or
+10. Paste here in the "key" textfield.
+11. Now click on the "Title" below. It will automatically get filled.
+12. Then click "Add key".
+
+
+
+<hr>
+
+## HTTP Basic Access denied Gitlab Error
+
+### Error
+
+ HTTP Basic: Access denied. The provided password or token is incorrect or your account has 2FA enabled and you must use a personal access token instead of a password
+
+ ### Solution
+
+1. Go to https://gitlab.com/-/profile/personal_access_tokens
+2. Add new token 
+3. Now when you are prompted for password enter the token in input field.
